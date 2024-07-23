@@ -1,9 +1,26 @@
 #ifndef STRING_H
 #define STRING_H
 
-	int my_strlen(const char *s);
-	void my_strcpy(char *des,const char *src);
-	int my_strcmp(const char *s1, const char *s2);
-	void my_strcat(char *des,const char *src);
+class String {
+private:
+	static const int STRINGSIZE;
 	
+	int *ps_;
+	int size_;
+	
+public:
+	explicit String (int size = STRINGSIZE);
+	String (const int *ps, int size);
+	String (const String& rhs);
+	~String();
+	
+	String& operator = (const String& rhs);
+	
+	bool operator == (const String& rhs) const;
+	
+	int& operator[] (int index);
+	const int& operator[] (int index) const;
+	int size() const;
+};
+
 #endif
